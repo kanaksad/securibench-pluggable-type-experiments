@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "more complex collection copying" 
@@ -27,7 +28,7 @@ public class Collections9 extends BasicTestCase implements MicroTestCase {
         String s1 = req.getParameter(FIELD_NAME);
         LinkedList<String> c1 = new LinkedList<>();
         c1.addLast(s1);
-        ArrayList<String> c2 = new ArrayList<>();
+        ArrayList<@RUntainted String> c2 = new ArrayList<>();
         c2.add("abc");
         c2.retainAll(c1);
         String s2 = c2.get(0); 

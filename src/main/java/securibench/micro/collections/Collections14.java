@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "more complex collection copying through an array" 
@@ -25,7 +26,7 @@ public class Collections14 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList<String> c = new LinkedList<>();
+        LinkedList<@RUntainted String> c = new LinkedList<>();
         for(int i = 0; i < 3000; i++){
         	c.addFirst("i: " + i);
         }

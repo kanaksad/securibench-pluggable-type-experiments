@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "test of maps" 
@@ -23,7 +24,7 @@ public class Collections6 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter(FIELD_NAME);
-        Map<String, String> m = new HashMap<>();
+        Map<String, @RUntainted String> m = new HashMap<>();
         m.put("a", name);
         String s1 = m.get("b");
         String s2 = m.get("a");

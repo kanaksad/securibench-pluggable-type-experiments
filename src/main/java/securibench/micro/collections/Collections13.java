@@ -30,9 +30,9 @@ public class Collections13 extends BasicTestCase implements MicroTestCase {
         c1.addLast(s1);
         c1.addFirst("x");
         Object[] array = c1.toArray();
-        List<Object> c2 = java.util.Arrays.asList(array);
-        List<String> c3 = java.util.Arrays.asList(new String[]{new String("xyz")});
-        List<String> c4 = java.util.Arrays.asList(new String[]{new String(s1)});
+        List<@RUntainted Object> c2 = java.util.Arrays.asList(array);
+        List<@RUntainted String> c3 = java.util.Arrays.asList(new String[]{new String("xyz")});
+        List<@RUntainted String> c4 = java.util.Arrays.asList(new String[]{new String(s1)});
         
         PrintWriter writer = resp.getWriter();  
       	writer.println(c2.get(0));                    /* BAD */

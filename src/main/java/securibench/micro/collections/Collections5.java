@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "test of iterators" 
@@ -23,10 +24,10 @@ public class Collections5 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter(FIELD_NAME);
-        ArrayList<String> ll = new ArrayList<String>();
+        ArrayList<@RUntainted String> ll = new ArrayList<@RUntainted String>();
         ll.add(name);
         
-        for(Iterator<String> iter = ll.iterator(); iter.hasNext();) {
+        for(Iterator<@RUntainted String> iter = ll.iterator(); iter.hasNext();) {
             PrintWriter writer = resp.getWriter();
             Object o = iter.next();
             

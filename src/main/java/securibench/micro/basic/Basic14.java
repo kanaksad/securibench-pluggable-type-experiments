@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="use the servlet context and casts" 
@@ -19,7 +20,7 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Basic14 extends BasicTestCase implements MicroTestCase {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        for(Enumeration<String> e = getServletConfig().getInitParameterNames(); e.hasMoreElements(); ) {
+        for(Enumeration<@RUntainted String> e = getServletConfig().getInitParameterNames(); e.hasMoreElements(); ) {
             String s  = (String) e.nextElement();
             PrintWriter writer = resp.getWriter();  
             writer.println(s);                      /* BAD */

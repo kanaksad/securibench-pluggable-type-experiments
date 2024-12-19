@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="collection as a static field" 
@@ -22,8 +23,8 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Inter12 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
-    static final Collection<String> COLLECTION1 = new LinkedList<String>();
-    static final Collection<String> COLLECTION2 = new LinkedList<String>();
+    static final Collection<@RUntainted String> COLLECTION1 = new LinkedList<@RUntainted String>();
+    static final Collection<@RUntainted String> COLLECTION2 = new LinkedList<@RUntainted String>();
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
@@ -39,11 +40,11 @@ public class Inter12 extends BasicTestCase implements MicroTestCase {
         writer.println(s3);                    /* OK */
     }
     
-	private void foo(String s) {
+	private void foo(@RUntainted String s) {
 		COLLECTION2.add(s);
 	}
 	
-	private void bar(String s) {
+	private void bar(@RUntainted String s) {
 		COLLECTION1.add(s);
 	}
     

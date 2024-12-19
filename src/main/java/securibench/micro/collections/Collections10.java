@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "more complex collection copying" 
@@ -26,12 +27,12 @@ public class Collections10 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList<String> c1 = new LinkedList<String>();
+        LinkedList<@RUntainted String> c1 = new LinkedList<@RUntainted String>();
         c1.addLast(s1);
-        ArrayList<String> c2 = new ArrayList<String>();
+        ArrayList<@RUntainted String> c2 = new ArrayList<@RUntainted String>();
         c2.add("abc");
         
-        Iterator<String> iter = c1.iterator();
+        Iterator<@RUntainted String> iter = c1.iterator();
         PrintWriter writer = resp.getWriter();  
         while(iter.hasNext()){
         	String str = iter.next();

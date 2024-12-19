@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "collection deposit/retrieve, check for false positives" 
@@ -22,10 +23,10 @@ public class Collections2 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList<String> ll1 = new LinkedList<String>();
+        LinkedList<@RUntainted String> ll1 = new LinkedList<@RUntainted String>();
         ll1.addLast(s1);
         
-        LinkedList<String> ll2 = new LinkedList<String>();
+        LinkedList<@RUntainted String> ll2 = new LinkedList<@RUntainted String>();
         ll1.addLast("abc");
         
         String s2 = ll1.getLast();
