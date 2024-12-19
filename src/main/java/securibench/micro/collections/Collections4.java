@@ -23,10 +23,10 @@ public class Collections4 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter(FIELD_NAME);
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<String>();
         ll.addLast(name);
         
-        for(Iterator iter = ll.iterator(); iter.hasNext();) {
+        for(Iterator<String> iter = ll.iterator(); iter.hasNext();) {
             PrintWriter writer = resp.getWriter();
             Object o = iter.next();
             

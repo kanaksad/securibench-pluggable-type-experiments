@@ -26,22 +26,22 @@ public class Collections10 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList c1 = new LinkedList();
+        LinkedList<String> c1 = new LinkedList<String>();
         c1.addLast(s1);
-        ArrayList c2 = new ArrayList();
+        ArrayList<String> c2 = new ArrayList<String>();
         c2.add("abc");
         
-        Iterator iter = c1.iterator();
+        Iterator<String> iter = c1.iterator();
         PrintWriter writer = resp.getWriter();  
         while(iter.hasNext()){
-        	String str = (String) iter.next();
+        	String str = iter.next();
         	
         	writer.println(str);                    /* BAD */
         }
         
         iter = c2.iterator();
         while(iter.hasNext()){
-        	String str = (String) iter.next();
+        	String str = iter.next();
         	
         	writer.println(str);                    /* OK */
         }

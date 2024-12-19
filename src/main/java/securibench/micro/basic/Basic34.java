@@ -20,7 +20,7 @@ import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
  */
 public class Basic34 extends BasicTestCase implements MicroTestCase {
       protected void doGet(@RUntainted HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Enumeration e = req.getHeaderNames();
+        Enumeration<String> e = req.getHeaderNames();
         while(e.hasMoreElements()) {
             String headerName = (String) e.nextElement();
             String headerValue = (String) req.getHeader(headerName);

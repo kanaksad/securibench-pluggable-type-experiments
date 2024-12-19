@@ -26,13 +26,13 @@ public class Collections13 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList c1 = new LinkedList();
+        LinkedList<String> c1 = new LinkedList<>();
         c1.addLast(s1);
         c1.addFirst("x");
-        @RUntainted Object[] array = c1.toArray();
-        List c2 = java.util.Arrays.asList(array);
-        List c3 = java.util.Arrays.asList(new String[]{new String("xyz")});
-        List c4 = java.util.Arrays.asList(new String[]{new String(s1)});
+        Object[] array = c1.toArray();
+        List<Object> c2 = java.util.Arrays.asList(array);
+        List<String> c3 = java.util.Arrays.asList(new String[]{new String("xyz")});
+        List<String> c4 = java.util.Arrays.asList(new String[]{new String(s1)});
         
         PrintWriter writer = resp.getWriter();  
       	writer.println(c2.get(0));                    /* BAD */

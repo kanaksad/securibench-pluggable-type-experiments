@@ -25,12 +25,12 @@ public class Collections8 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList c1 = new LinkedList();
+        LinkedList<String> c1 = new LinkedList<String>();
         c1.addLast(s1);
-        ArrayList c2 = new ArrayList();
+        ArrayList<String> c2 = new ArrayList<String>();
         c2.add("abc");
         c2.addAll(c1);
-        String s2 = (String) c2.get(0); 
+        String s2 = c2.get(0); 
         
         PrintWriter writer = resp.getWriter();  
         writer.println(s2);                    /* BAD */

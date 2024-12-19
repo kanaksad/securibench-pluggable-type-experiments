@@ -22,9 +22,9 @@ public class Collections1 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<String>();
         ll.addLast(s1);
-        String s2 = (String) ll.getLast();
+        String s2 = ll.getLast();
         
         PrintWriter writer = resp.getWriter();  
         writer.println(s2);                    /* BAD */
