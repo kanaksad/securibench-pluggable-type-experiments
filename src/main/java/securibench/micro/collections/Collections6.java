@@ -23,10 +23,10 @@ public class Collections6 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter(FIELD_NAME);
-        Map m = new HashMap();
+        Map<String, String> m = new HashMap<>();
         m.put("a", name);
-        String s1 = (String) m.get("b");
-        String s2 = (String) m.get("a");
+        String s1 = m.get("b");
+        String s2 = m.get("a");
         
         PrintWriter writer = resp.getWriter();
         writer.println(s1);                    /* OK */

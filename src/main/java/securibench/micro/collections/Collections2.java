@@ -22,14 +22,14 @@ public class Collections2 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList ll1 = new LinkedList();
+        LinkedList<String> ll1 = new LinkedList<String>();
         ll1.addLast(s1);
         
-        LinkedList ll2 = new LinkedList();
+        LinkedList<String> ll2 = new LinkedList<String>();
         ll1.addLast("abc");
         
-        String s2 = (String) ll1.getLast();
-        String s3 = (String) ll2.getLast();
+        String s2 = ll1.getLast();
+        String s3 = ll2.getLast();
         
         PrintWriter writer = resp.getWriter();  
         writer.println(s2);                    /* BAD */

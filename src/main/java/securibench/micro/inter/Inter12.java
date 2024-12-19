@@ -22,8 +22,8 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Inter12 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
-    static final Collection COLLECTION1 = new LinkedList();
-    static final Collection COLLECTION2 = new LinkedList();
+    static final Collection<String> COLLECTION1 = new LinkedList<String>();
+    static final Collection<String> COLLECTION2 = new LinkedList<String>();
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
@@ -39,11 +39,11 @@ public class Inter12 extends BasicTestCase implements MicroTestCase {
         writer.println(s3);                    /* OK */
     }
     
-	private void foo(Object s) {
+	private void foo(String s) {
 		COLLECTION2.add(s);
 	}
 	
-	private void bar(Object s) {
+	private void bar(String s) {
 		COLLECTION1.add(s);
 	}
     

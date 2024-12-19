@@ -25,10 +25,10 @@ public class Collections7 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter(FIELD_NAME);
-        Map m = new HashMap();
+        Map<String, String> m = new HashMap<>();
         m.put("a", name);
-        for(Iterator iter = m.entrySet().iterator(); iter.hasNext();) {
-            Map.Entry e = (Entry) iter.next();
+        for(Iterator<Map.Entry<String, String>> iter = m.entrySet().iterator(); iter.hasNext();) {
+            Map.Entry<String, String> e = iter.next();
             
             PrintWriter writer = resp.getWriter();
             writer.println(e.getKey());                         /* OK */

@@ -1,3 +1,4 @@
+
 /**
    @author Benjamin Livshits <livshits@cs.stanford.edu>
    
@@ -12,14 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
-
 /**
  * @servlet description="values obtained from headers"
  * @servlet vuln_count = "2"
  */
 public class Basic34 extends BasicTestCase implements MicroTestCase {
       protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Enumeration e = req.getHeaderNames();
+        Enumeration<String> e = req.getHeaderNames();
         while(e.hasMoreElements()) {
             String headerName = (String) e.nextElement();
             String headerValue = (String) req.getHeader(headerName);

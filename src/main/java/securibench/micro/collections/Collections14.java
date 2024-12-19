@@ -25,7 +25,7 @@ public class Collections14 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);
-        LinkedList c = new LinkedList();
+        LinkedList<String> c = new LinkedList<>();
         for(int i = 0; i < 3000; i++){
         	c.addFirst("i: " + i);
         }
