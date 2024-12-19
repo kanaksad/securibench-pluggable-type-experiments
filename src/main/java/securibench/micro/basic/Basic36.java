@@ -14,13 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /**
  * @servlet description="values obtained from HttpServletRequest input stream"
  * @servlet vuln_count = "1"
  */
 public class Basic36 extends BasicTestCase implements MicroTestCase {
-      protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+      protected void doGet(@RUntainted HttpServletRequest req, HttpServletResponse resp) throws IOException {
         ServletInputStream in = req.getInputStream();
         BufferedReader r = new BufferedReader(new InputStreamReader(in));
         String line = r.readLine();

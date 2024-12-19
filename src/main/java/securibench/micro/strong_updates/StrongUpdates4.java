@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="a more tricky test of when we can't assume a strong update with multiple variables that are not thread-local" 
@@ -22,7 +23,7 @@ public class StrongUpdates4 extends BasicTestCase implements MicroTestCase {
      * So, depending on the user interaction, we can have a data race with two users accessing field
      * "name". Therefore, when u1 sets it, u1 resets it, u2 sets it, u1 reads it, we can still have a problem.  
      * */
-    private String name;
+    private @RUntainted String name;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         name = req.getParameter(FIELD_NAME);

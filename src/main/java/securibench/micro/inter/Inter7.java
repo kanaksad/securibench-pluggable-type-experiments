@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "bug in class initializer" 
@@ -18,11 +19,11 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Inter7 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
-    private static String name;
+    private static @RUntainted String name;
     private static PrintWriter writer;
     
     static class Base {
-        public Base(String value) {
+        public Base(@RUntainted String value) {
             this.value = value;
             foo();
         }
@@ -33,11 +34,11 @@ public class Inter7 extends BasicTestCase implements MicroTestCase {
             return value;
         }
 
-        String value;
+        @RUntainted String value;
     }
     
     static class ReflectivelyCreated extends Base {
-        ReflectivelyCreated(String value){
+        ReflectivelyCreated(@RUntainted String value){
             super(value);
         }
     }

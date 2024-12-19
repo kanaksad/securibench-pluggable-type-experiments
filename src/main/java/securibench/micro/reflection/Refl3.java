@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "reflectively create a class and access its field" 
@@ -19,10 +20,10 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Refl3 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
-    private String name;
+    private @RUntainted String name;
     
     public static class ReflectivelyCreated {
-        public String value;        
+        public @RUntainted String value;        
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

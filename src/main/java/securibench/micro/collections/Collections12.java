@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "collection copying through an array" 
@@ -26,7 +27,7 @@ public class Collections12 extends BasicTestCase implements MicroTestCase {
         String s1 = req.getParameter(FIELD_NAME);
         LinkedList c1 = new LinkedList();
         c1.addLast(s1);
-        Object[] array = c1.toArray();
+        @RUntainted Object[] array = c1.toArray();
         
         PrintWriter writer = resp.getWriter();  
       	writer.println(array[0]);                    /* BAD */

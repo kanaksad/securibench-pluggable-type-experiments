@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="interprocedural argument aliasing" 
@@ -28,7 +29,7 @@ public class Aliasing5 extends BasicTestCase implements MicroTestCase {
        	foo(buf, buf, resp, req);
     }
     
-    void foo(StringBuffer buf, StringBuffer buf2, ServletResponse resp, ServletRequest req) throws IOException {
+    void foo(StringBuffer buf, @RUntainted StringBuffer buf2, ServletResponse resp, ServletRequest req) throws IOException {
     	String name = req.getParameter(FIELD_NAME);
     	buf.append(name);
     	PrintWriter writer = resp.getWriter();

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="object sensitivity and context sensitivity combined" 
@@ -32,11 +33,11 @@ public class Inter11 extends BasicTestCase implements MicroTestCase {
         writer.println(s3);                    /* OK */
     }
     
-    private String id(String string) {
+    private @RUntainted String id(@RUntainted String string) {
 		return string;
 	}
 
-	private String foo(String s1) {
+	private @RUntainted String foo(@RUntainted String s1) {
 		return s1.toUpperCase();
 	}
     

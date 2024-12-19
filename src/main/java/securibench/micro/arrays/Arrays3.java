@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "a more complex array test" 
@@ -19,8 +20,8 @@ import securibench.micro.MicroTestCase;
 public class Arrays3 extends BasicTestCase implements MicroTestCase {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter("name");
-        String[] array1 = new String[10];
-        String[] array2 = new String[10];
+        @RUntainted String[] array1 = new String[10];
+        @RUntainted String[] array2 = new String[10];
 
         array1[0] = s1;
         array2[0] = "abc";

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="multi-level context sensitivity test" 
@@ -30,19 +31,19 @@ public class Inter8 extends BasicTestCase implements MicroTestCase {
         writer.println(s3);                    /* OK */
     }
     
-    private String foo(String s1) {
+    private @RUntainted String foo(@RUntainted String s1) {
 		return id(s1);
 	}
 
-	private String bar(String string) {
+	private @RUntainted String bar(@RUntainted String string) {
 		return id(string);
 	}
 
-	private String id(String string) {
+	private @RUntainted String id(@RUntainted String string) {
         return id2(string);
     }
     
-    private String id2(String string) {
+    private @RUntainted String id2(@RUntainted String string) {
         return string;
     }
 

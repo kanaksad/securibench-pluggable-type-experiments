@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
 import com.oreilly.servlet.MultipartRequest;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /**
  * @servlet description="MultipartRequest test"
@@ -20,7 +21,7 @@ import com.oreilly.servlet.MultipartRequest;
 public class Basic40 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
       
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(@RUntainted HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // TODO: this expects multipart input 
         MultipartRequest mreq = new MultipartRequest(req, System.getenv("HOME"));
         String name = mreq.getParameter(FIELD_NAME);

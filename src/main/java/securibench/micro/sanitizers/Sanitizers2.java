@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="simple sanitization check" 
@@ -35,7 +36,7 @@ public class Sanitizers2 extends BasicTestCase implements MicroTestCase {
      * @sanitizer 
      * javascript sanitization routine 
      * */
-    private String clean(String name) {
+    private @RUntainted String clean(@RUntainted String name) {
         StringBuffer buf = new StringBuffer();
         for(int i = 0; i < name.length(); i++) {
             char ch = name.charAt(i);

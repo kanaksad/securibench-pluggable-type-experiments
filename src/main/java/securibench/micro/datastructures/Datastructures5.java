@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="nested data in a loop" 
@@ -20,11 +21,11 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Datastructures5 extends BasicTestCase implements MicroTestCase {
     public class C {
-    	private String str;
+    	private @RUntainted String str;
     	private C next;
     	
-    	public String getData(){return this.str;}
-    	public void setData(String str){this.str = str;}
+    	public @RUntainted String getData(){return this.str;}
+    	public void setData(@RUntainted String str){this.str = str;}
     	public void setNext(C next){this.next = next;}
 	}
 

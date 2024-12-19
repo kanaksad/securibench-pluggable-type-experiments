@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="simple id method call" 
@@ -29,7 +30,7 @@ public class Inter2 extends BasicTestCase implements MicroTestCase {
         writer.println(s3);         /* OK */
     }
     
-    private String id(String string, PrintWriter writer) {
+    private @RUntainted String id(@RUntainted String string, PrintWriter writer) {
         writer.println(string); /* BAD */
         
         return string;

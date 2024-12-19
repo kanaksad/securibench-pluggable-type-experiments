@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="reflective call of a method" 
@@ -21,7 +22,7 @@ import securibench.micro.MicroTestCase;
 public class Refl1 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, @RUntainted HttpServletResponse resp) throws IOException {
         String s1 = req.getParameter(FIELD_NAME);        
         PrintWriter writer = resp.getWriter();
         

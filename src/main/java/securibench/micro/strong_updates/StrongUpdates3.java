@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="strong updates in data structures" 
@@ -20,7 +21,7 @@ public class StrongUpdates3 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
     
     class Widget {
-        String value = null;
+        @RUntainted String value = null;
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "comple multidimentional array test" 
@@ -19,7 +20,7 @@ import securibench.micro.MicroTestCase;
 public class Arrays10 extends BasicTestCase implements MicroTestCase {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter("name");
-        String[][] array = new String[3][5];
+        @RUntainted String[][] array = new String[3][5];
         array[0] = new String[] {name, "abc"};
         
         PrintWriter writer = resp.getWriter();

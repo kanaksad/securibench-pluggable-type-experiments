@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "factory problem with a string wrapper" 
@@ -18,14 +19,14 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Factories3 extends BasicTestCase implements MicroTestCase {
     class StringWrapper {
-        StringWrapper(String value){
+        StringWrapper(@RUntainted String value){
             this.value = value;
         }
-        public String toString() {
+        public @RUntainted String toString() {
             return value;
         }
         
-        protected String value;
+        protected @RUntainted String value;
     }
     
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

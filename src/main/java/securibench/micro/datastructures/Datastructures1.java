@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="simple test of field assignment" 
@@ -20,12 +21,12 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Datastructures1 extends BasicTestCase implements MicroTestCase {
     public class C {
-    	private String str;
+    	private @RUntainted String str;
     	private String tag = "abc";
     	
-    	public String getData(){return this.str;}
-    	public String getTag(){return this.str;}
-    	public void setData(String str){this.str = str;}
+    	public @RUntainted String getData(){return this.str;}
+    	public @RUntainted String getTag(){return this.str;}
+    	public void setData(@RUntainted String str){this.str = str;}
 	}
 
 	private static final String FIELD_NAME = "name";

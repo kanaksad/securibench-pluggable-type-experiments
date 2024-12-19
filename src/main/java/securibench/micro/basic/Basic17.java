@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="simple heap-allocated data strucure" 
@@ -18,13 +19,13 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Basic17 extends BasicTestCase implements MicroTestCase {
     public class Widget {
-        String contents;
+        @RUntainted String contents;
 
-        public String getContents() {
+        public @RUntainted String getContents() {
             return contents;
         }
 
-        public void setContents(String contents) {
+        public void setContents(@RUntainted String contents) {
             this.contents = contents;
         }
     }

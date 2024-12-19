@@ -10,13 +10,14 @@ import java.io.PrintWriter;
 import java.util.Collection;
 
 import javax.servlet.ServletResponse;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "simple collection deposit/retrieve" 
  *  @servlet vuln_count = "1" 
  *  */
 class Collections11b {
-    protected void foo(Object o, ServletResponse resp) throws IOException {
+    protected void foo(@RUntainted Object o, ServletResponse resp) throws IOException {
     	Collection c = (Collection) o;
         String str = c.toString();
         PrintWriter writer = resp.getWriter();  

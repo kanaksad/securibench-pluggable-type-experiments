@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "more complex collection copying through an array" 
@@ -28,7 +29,7 @@ public class Collections13 extends BasicTestCase implements MicroTestCase {
         LinkedList c1 = new LinkedList();
         c1.addLast(s1);
         c1.addFirst("x");
-        Object[] array = c1.toArray();
+        @RUntainted Object[] array = c1.toArray();
         List c2 = java.util.Arrays.asList(array);
         List c3 = java.util.Arrays.asList(new String[]{new String("xyz")});
         List c4 = java.util.Arrays.asList(new String[]{new String(s1)});

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "bug in class initializer" 
@@ -18,7 +19,7 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Inter6 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
-    private static String name;
+    private static @RUntainted String name;
     private static PrintWriter writer;
     
     static class ReflectivelyCreated {

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description = "a test of array indeces" 
@@ -21,7 +22,7 @@ public class Arrays4 extends BasicTestCase implements MicroTestCase {
         String name = req.getParameter("name");
         int n = 15432532;
         
-        String[] array = new String[10];        
+        @RUntainted String[] array = new String[10];        
         array[0] = name;
         
         PrintWriter writer = resp.getWriter();

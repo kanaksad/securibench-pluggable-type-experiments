@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="aliasing with copy propagation" 
@@ -22,7 +23,7 @@ public class Aliasing6 extends BasicTestCase implements MicroTestCase {
 	private static final String FIELD_NAME = "name";
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-       String[] names = req.getParameterValues(FIELD_NAME);
+       @RUntainted String[] names = req.getParameterValues(FIELD_NAME);
        Object 
        	o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o20,
        	o21, o22, o23, o24, o25, o26, o27, o28, o29, o30, o31, o32, o33, o34, o35, o36, o37, o38, o39, o40;

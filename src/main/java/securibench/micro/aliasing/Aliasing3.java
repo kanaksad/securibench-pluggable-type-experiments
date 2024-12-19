@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="simple aliasing of an array element" 
@@ -23,7 +24,7 @@ public class Aliasing3 extends BasicTestCase implements MicroTestCase {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
        String name = req.getParameter(FIELD_NAME);
-       String[] a = new String[10];
+       @RUntainted String[] a = new String[10];
        String str = a[5];
        a[5] = name;
        name = str;

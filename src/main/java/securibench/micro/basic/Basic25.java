@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="test getParameterValues" 
@@ -21,7 +22,7 @@ public class Basic25 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-       String[] s = req.getParameterValues(FIELD_NAME);
+       @RUntainted String[] s = req.getParameterValues(FIELD_NAME);
        String name = s[0].toLowerCase(Locale.UK);
        
        PrintWriter writer = resp.getWriter();

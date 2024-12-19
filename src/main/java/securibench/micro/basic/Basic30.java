@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /**
  * @servlet description="field sensitivity"
@@ -18,8 +19,8 @@ import securibench.micro.MicroTestCase;
  */
 public class Basic30 extends BasicTestCase implements MicroTestCase {
     class Data {
-        String value1;
-        String value2;
+        @RUntainted String value1;
+        @RUntainted String value2;
     }
     
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

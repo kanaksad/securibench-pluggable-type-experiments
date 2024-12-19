@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="multiple objects of the same type" 
@@ -20,10 +21,10 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Datastructures2 extends BasicTestCase implements MicroTestCase {
     public class C {
-    	private String str;
-    	public String getData(){return this.str;}
+    	private @RUntainted String str;
+    	public @RUntainted String getData(){return this.str;}
     	public String getTag(){return this.str;}
-    	public void setData(String str){this.str = str;}
+    	public void setData(@RUntainted String str){this.str = str;}
 	}
 
 	private static final String FIELD_NAME = "name";

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="making a shared servlet field thread-local" 
@@ -18,7 +19,7 @@ import securibench.micro.MicroTestCase;
  *  */
 public class StrongUpdates5 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
-    private String name;
+    private @RUntainted String name;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // access to this.name is protected within the block, so we are safe

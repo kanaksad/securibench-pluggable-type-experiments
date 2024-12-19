@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="store stuff in a field" 
@@ -19,7 +20,7 @@ import securibench.micro.MicroTestCase;
  *  */
 public class Inter4 extends BasicTestCase implements MicroTestCase {
     private static final String FIELD_NAME = "name";
-    private String name;
+    private @RUntainted String name;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         name = req.getParameter(FIELD_NAME);

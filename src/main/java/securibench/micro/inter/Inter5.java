@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="store stuff in a field" 
@@ -30,7 +31,7 @@ public class Inter5 extends BasicTestCase implements MicroTestCase {
         writer.println(s2);         /* OK */
     }
     
-    private String id(String in) throws IOException {
+    private @RUntainted String id(@RUntainted String in) throws IOException {
         return in.toLowerCase();
     }
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="sanitizers for directory traversal" 
@@ -35,7 +36,7 @@ public class Sanitizers6 extends BasicTestCase implements MicroTestCase {
      * sanitization routine for removing . and /\ characters from strings.
      * This routine performs white-listing by only allowing letters and digits through.  
      * */
-    private static String clean(String name) {
+    private static @RUntainted String clean(@RUntainted String name) {
         StringBuffer buf = new StringBuffer();
         for(int i = 0; i < name.length(); i++) {
             char ch = name.charAt(i);

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import securibench.micro.BasicTestCase;
 import securibench.micro.MicroTestCase;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /** 
  *  @servlet description="recursive case" 
@@ -28,7 +29,7 @@ public class Inter13 extends BasicTestCase implements MicroTestCase {
         f(s1, 1000, resp);
     }
     
-	private void f(String s1, int i, ServletResponse resp) throws IOException {
+	private void f(@RUntainted String s1, int i, ServletResponse resp) throws IOException {
 		if(i != 0) {
 			f(s1, i-1, resp);
 		} else {
