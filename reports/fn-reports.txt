@@ -1,0 +1,2 @@
+only missing report by TaintTyper is on Sanitizers4.java line 32
+        writer.println("<html>" + clean + "</html>");                  /* BAD */        
